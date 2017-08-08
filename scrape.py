@@ -62,7 +62,7 @@ def downloadPDF(productID, href):
     # The product name is used to form the folder and file name that
     # will store the downloaded color change PDF.
     productName = soup.select('table.content-item.info-table.padded.no-border > tr td:nth-of-type(2)')[0].text.strip()
-    print(productID, productName, sep='-', flush=True)
+    print(productID, productName, sep='-')
     # Select the hidden tags from the DOM. Add the hidden values to
     # the post data within a dictionary.
     hidden_tags = soup.select('input[type=hidden]')
@@ -78,8 +78,6 @@ def downloadPDF(productID, href):
     with open(dirPath + filePath, 'wb') as fd:
         for chunk in r.iter_content(chunk_size):
             fd.write(chunk)
-            print('#', end='', flush=True)
-    print("")
 
 #####################################################################
 #
