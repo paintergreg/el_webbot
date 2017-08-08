@@ -4,7 +4,9 @@
 
 import requests
 import time
+import sys
 
+defaultURL = "http://www.emblibrary.com/EL/New.aspx"
 def downloadPDF():
     chunk_size = 2048
 
@@ -45,5 +47,17 @@ def printTest():
         time.sleep(.5)
     print("")
 
+# http://www.emblibrary.com/EL/new.aspx?date=040517
+# http://www.emblibrary.com/EL/New.aspx
+def keyBoardInput():
+    url = defaultURL
+    print(sys.platform)
+    i = input("Enter MMDDYY or Return: ")
+    if i != "":
+        url += "?date=" + i
+    return(url)
+
 if __name__ == "__main__":
-    printTest()
+    # printTest()
+    url = keyBoardInput()
+    print(url)

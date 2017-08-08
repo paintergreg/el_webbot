@@ -9,6 +9,7 @@ from shutil import rmtree
 import signal
 
 BASEDIR = './AAATemp/'
+defaultURL = "http://www.emblibrary.com/EL/New.aspx"
 
 #####################################################################
 #
@@ -98,9 +99,23 @@ def signal_handler(signal, frame):
     sys.exit(0)
 
 #####################################################################
+#
+# User input to select the week to download.  User enters MMDDYY or
+# and empty string.
+#
+def keyBoardInput():
+    url = defaultURL
+    i = input("Enter MMDDYY or Return: ")
+    if i != "":
+        url += "?date=" + i
+    return(url)
+
+
+#####################################################################
 # Control the main loop.
 #
 if __name__ == "__main__":
     signal.signal(signal.SIGINT, signal_handler)
     folderInitialize()
-    findLinks('http://www.emblibrary.com/EL/New.aspx')
+    url = keyBoardInput()
+    findLinks(url)
