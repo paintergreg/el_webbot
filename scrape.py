@@ -107,7 +107,7 @@ def signal_handler(signal, frame):
 #
 def keyBoardInput():
     url = defaultURL
-    i = input("Enter Date as: DD-MM-YY or DD/MM/YY or Return for today: ")
+    i = input("Enter Date as: DD-MM-YY or DD/MM/YY or DDMMYY or Return for today: ")
     if i != "":
         date = validDate(i)
         if date is not None:
@@ -122,12 +122,12 @@ def keyBoardInput():
 #
 def validDate(datestring):
     regex = re.compile(r"""
-                (\d{1,2})[/-]
-                (\d{1,2})[/-]
+                (\d{1,2})[/-]?
+                (\d{1,2})[/-]?
                 (\d{2,4})
                 """, re.VERBOSE)
     mat = regex.search(datestring)
-    # print(mat.groups()[-1::-1])
+
     try:
         if mat is not None:
             now = datetime(*(map(int, mat.groups()[-1::-1])))
