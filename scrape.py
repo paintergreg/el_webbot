@@ -42,8 +42,12 @@ def findLinks(url):
 def designDetail(productID, url):
     r = requests.get(url)
     soup = BeautifulSoup(r.content, 'html.parser')
-    anchor = soup.select('a#ColorChangeLink')
-    href = anchor[0].get('href')
+    try:
+        anchor = soup.select('a#ColorChangeLink')
+        href = anchor[0].get('href')
+    except IndexError as ie:
+        print(ie)
+        return
     downloadPDF(productID, href)
 
 #####################################################################
