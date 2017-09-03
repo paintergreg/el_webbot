@@ -18,15 +18,7 @@ from utilities import folderInitialize, keyBoardInput, signal_handler
 def findLinks(url):
     r = requests.get(url)
     soup = BeautifulSoup(r.content, 'html.parser')
-    #
-    # Find all the anchor tags that reference design details.
-    # There may be different sizes for each design.  Follow each
-    # size reference.
-    #
-    for link in soup.select('span.sizeSpan a'):
-        href = link.get('href')
-        params = href.split('=')  # params[2] is the productID
-        designDetail(params[2], href)  # This function follows design reference
+    return soup
 
 #####################################################################
 #
@@ -38,11 +30,7 @@ def designDetail(productID, url):
     r = requests.get(url)
     soup = BeautifulSoup(r.content, 'html.parser')
     anchor = soup.select('a#ColorChangeLink')
-    if not anchor:
-        print("No Color Change Link")
-        return
-    href = anchor[0].get('href')
-    downloadPDF(productID, href)
+    return anchor
 
 #####################################################################
 #
@@ -85,10 +73,25 @@ def downloadPDF(productID, href):
 #
 if __name__ == "__main__":
     signal.signal(signal.SIGINT, signal_handler)
-    folderInitialize()
     url = keyBoardInput()
     if url is None:
         print("Problem entering date.")
     else:
         print(url)
-        findLinks(url)
+        folderInitialize()
+        mainPage = findLinks(url)  # Return a BeautifulSoup object of the main page
+        #
+        # Find all the anchor tags that reference design details.
+        # There may be different sizes for each design.  Follow each
+        # size reference.
+        #
+        for link in mainPage.select('span.sizeSpan a'):
+            detailPageLink = link.get('href')
+            params = detailPageLink.split('=')  # params[2] is the productID
+            productID = params[2]
+            colorChangeLink = designDetail(productID, detailPageLink)  # This function follows design reference
+            if not colorChangeLink:
+                print(productID, "- Does not have a Color Change Link")
+            else:
+                designPageLink = colorChangeLink[0].get('href')
+                downloadPDF(productID, designPageLink)
