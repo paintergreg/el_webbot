@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 import requests
 import os
 import signal
-from utilities import folderInitialize, keyBoardInput, signal_handler
+from utilities import folderInitialize, keyBoardInput, signal_handler, savePDF
 
 
 #####################################################################
@@ -37,7 +37,6 @@ def designDetail(productID, url):
 #
 #
 def downloadPDF(productID, href):
-    chunk_size = 2048
     # productID is needed as a query parameter.
     payload = {}
     payload['productID'] = productID
@@ -59,14 +58,10 @@ def downloadPDF(productID, href):
         postData[tag['name']] = tag['value']
     # Request the PDF.
     r = requests.post(url, params=payload, data=postData)
-    dirPath = './AAATemp/' + productID + ' ' + productName + '/'
-    os.makedirs(dirPath, exist_ok=True)
-    filePath =  productID + ' ' + productName + '.pdf'
-    # Open the folder and file to save the PDF.  Write it out chunk_size
-    # at a time.
-    with open(dirPath + filePath, 'wb') as fd:
-        for chunk in r.iter_content(chunk_size):
-            fd.write(chunk)
+    # PDF is downloaded.  Save in a folder named with the productID
+    # and productName.  Make the file name the productID, productName and
+    # '.pdf' extension
+    savePDF(r, productID, productName)
 
 #####################################################################
 # Control the main loop.

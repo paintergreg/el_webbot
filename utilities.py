@@ -8,7 +8,7 @@ import signal
 from datetime import datetime
 
 defaultURL = "http://www.emblibrary.com/EL/New.aspx"
-BASEDIR = './AAATemp/'
+BASEDIR = os.path.join('AAATemp')
 
 #####################################################################
 #
@@ -19,6 +19,19 @@ def folderInitialize():
     if os.path.exists(BASEDIR):
         rmtree(BASEDIR)  # if BASEDIR exists remove it and all children
     os.makedirs(BASEDIR) # Create an empty BASEDIR folder.
+
+#####################################################################
+# Save the PDF in a folder named with the productID and productName.
+# Make the file name the productID, productName and '.pdf' extension
+#
+def savePDF(r, productID, productName):
+    dirPath = os.path.join('.', BASEDIR, productID + ' ' + productName)
+    os.makedirs(dirPath, exist_ok=True)
+    filePath =  productID + ' ' + productName + '.pdf'
+    chunk_size = 2048
+    with open(os.path.join(dirPath, filePath), 'wb') as fd:
+        for chunk in r.iter_content(chunk_size):
+            fd.write(chunk)
 
 #####################################################################
 #
