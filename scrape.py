@@ -8,34 +8,30 @@ import signal
 from utilities import folderInitialize, keyBoardInput, signal_handler, savePDF
 
 
-#####################################################################
-#
-# Start at the http://www.emblibrary.com/EL/New.aspx
-# or the user entered url.  Search for all product links.
-# Then follow those links.  Search for the links within the span
-# of class=sizeSpan
-#
 def findLinks(url):
+    """
+    Start at the http://www.emblibrary.com/EL/New.aspx
+    or the user entered url.  Search for all product links.
+    Then follow those links.  Search for the links within the span
+    of class=sizeSpan
+    """
     r = requests.get(url)
     soup = BeautifulSoup(r.content, 'html.parser')
     return soup
 
-#####################################################################
-#
-# Scrape the design detail page.  It will have links to a color change page.
-# From the color change page, there will be access to a link that will
-# download a PDF file.
-#
+
 def designDetail(productID, url):
+    """
+    Scrape the design detail page.  It will have links to a color change page.
+    From the color change page, there will be access to a link that will
+    download a PDF file.
+    """
     r = requests.get(url)
     soup = BeautifulSoup(r.content, 'html.parser')
     anchor = soup.select('a#ColorChangeLink')
     return anchor
 
-#####################################################################
-#
-#
-#
+
 def downloadPDF(productID, href):
     # productID is needed as a query parameter.
     payload = {}
@@ -63,10 +59,11 @@ def downloadPDF(productID, href):
     # '.pdf' extension
     savePDF(r, productID, productName)
 
-#####################################################################
-# Control the main loop.
-#
+
 if __name__ == "__main__":
+    """
+    Control the main loop.
+    """
     signal.signal(signal.SIGINT, signal_handler)
     url = keyBoardInput()
     if url is None:
@@ -74,7 +71,8 @@ if __name__ == "__main__":
     else:
         print(url)
         folderInitialize()
-        mainPage = findLinks(url)  # Return a BeautifulSoup object of the main page
+        # Return a BeautifulSoup object of the main page
+        mainPage = findLinks(url)
         #
         # Find all the anchor tags that reference design details.
         # There may be different sizes for each design.  Follow each

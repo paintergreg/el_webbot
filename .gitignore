@@ -1,4 +1,5 @@
 AAATemp/
 __pycache__/
 *.pyc
+*.sublime-workspace*
 
