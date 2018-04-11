@@ -6,7 +6,7 @@ import sys
 from shutil import rmtree
 from datetime import datetime
 
-defaultURL = "http://www.emblibrary.com/EL/New.aspx"
+defaultURL = "https://www.emblibrary.com/EL/New.aspx"
 BASEDIR = os.path.join('AAATemp')
 
 

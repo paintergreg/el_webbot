@@ -6,11 +6,11 @@ import requests
 import time
 import sys
 
-defaultURL = "http://www.emblibrary.com/EL/New.aspx"
+defaultURL = "https://www.emblibrary.com/EL/New.aspx"
 def downloadPDF():
     chunk_size = 2048
 
-    url = 'http://www.emblibrary.com/EL/ColorChange.aspx'
+    url = 'https://www.emblibrary.com/EL/ColorChange.aspx'
     payload = {}
     payload['productID'] = 'm14461'
     #payload = {'productID': 'm14461'}
