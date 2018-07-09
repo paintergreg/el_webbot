@@ -27,7 +27,7 @@ def savePDF(r, productID, productName):
     """
     dirPath = os.path.join('.', BASEDIR, productID + ' ' + productName)
     os.makedirs(dirPath, exist_ok=True)
-    filePath = productID + ' ' + productName + '.pdf'
+    filePath = f'{productID} {productName}.pdf'
     chunk_size = 2048
     with open(os.path.join(dirPath, filePath), 'wb') as fd:
         for chunk in r.iter_content(chunk_size):
