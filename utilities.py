@@ -48,7 +48,8 @@ def keyBoardInput():
     and empty string.  Embrodiery Library accepts the date at MMDDYY.
     """
     url = defaultURL
-    i = input("Enter Date as: DD-MM-YY or DD/MM/YY or DDMMYY or Return for today: ")
+    i = input(
+        "Enter Date as: DD-MM-YY or DD/MM/YY or DDMMYY or Return for today: ")
     if i != "":
         date = validDate(i)
         if date is not None:

@@ -45,7 +45,8 @@ def downloadPDF(productID, href):
     soup = BeautifulSoup(r.content, 'html.parser')
     # The product name is used to form the folder and file name that
     # will store the downloaded color change PDF.
-    productName = soup.select('table.content-item.info-table.padded.no-border > tr td:nth-of-type(2)')[0].text.strip()
+    xsel = 'table.content-item.info-table.padded.no-border > tr td:nth-of-type(2)'
+    productName = soup.select(xsel)[0].text.strip()
     print(f'{productID}-{productName}')
     # Select the hidden tags from the DOM. Add the hidden values to
     # the post data within a dictionary.
