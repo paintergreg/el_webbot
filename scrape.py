@@ -32,7 +32,7 @@ def designDetail(productID, url):
     return anchor
 
 
-def downloadPDF(productID, href):
+def downloadPDF(productID, href, folder_name):
     # productID is needed as a query parameter.
     payload = {}
     payload['productID'] = productID
@@ -58,7 +58,7 @@ def downloadPDF(productID, href):
     # PDF is downloaded.  Save in a folder named with the productID
     # and productName.  Make the file name the productID, productName and
     # '.pdf' extension
-    savePDF(r, productID, productName)
+    savePDF(r, productID, productName, folder_name)
 
 
 if __name__ == "__main__":
@@ -66,12 +66,14 @@ if __name__ == "__main__":
     Control the main loop.
     """
     signal.signal(signal.SIGINT, signal_handler)
-    url = keyBoardInput()
+    input_data = keyBoardInput()
+    url = input_data[0]
+    folder_name = input_data[1]
     if url is None:
         print("Problem entering date.")
     else:
         print(f'{url}')
-        folderInitialize()
+        folderInitialize(folder_name)
         # Return a BeautifulSoup object of the main page
         mainPage = findLinks(url)
         #
@@ -89,4 +91,4 @@ if __name__ == "__main__":
                 print(productID, "- Does not have a Color Change Link")
             else:
                 designPageLink = colorChangeLink[0].get('href')
-                downloadPDF(productID, designPageLink)
+                downloadPDF(productID, designPageLink, folder_name)
