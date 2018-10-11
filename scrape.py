@@ -3,7 +3,6 @@
 
 from bs4 import BeautifulSoup
 import requests
-import os
 import signal
 from utilities import folderInitialize, keyBoardInput, signal_handler, savePDF
 
@@ -32,7 +31,7 @@ def designDetail(productID, url):
     return anchor
 
 
-def downloadPDF(productID, href, folder_name):
+def downloadPDF(productID, href):
     # productID is needed as a query parameter.
     payload = {}
     payload['productID'] = productID
@@ -58,7 +57,7 @@ def downloadPDF(productID, href, folder_name):
     # PDF is downloaded.  Save in a folder named with the productID
     # and productName.  Make the file name the productID, productName and
     # '.pdf' extension
-    savePDF(r, productID, productName, folder_name)
+    savePDF(r, productID, productName)
 
 
 if __name__ == "__main__":
@@ -91,4 +90,4 @@ if __name__ == "__main__":
                 print(productID, "- Does not have a Color Change Link")
             else:
                 designPageLink = colorChangeLink[0].get('href')
-                downloadPDF(productID, designPageLink, folder_name)
+                downloadPDF(productID, designPageLink)
