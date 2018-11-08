@@ -5,6 +5,7 @@ from bs4 import BeautifulSoup
 import requests
 import signal
 from utilities import folderInitialize, keyBoardInput, signal_handler, savePDF
+from product_name import modify_product_name
 
 
 def findLinks(url):
@@ -46,7 +47,8 @@ def downloadPDF(productID, href):
     # will store the downloaded color change PDF.
     xsel = 'table.content-item.info-table.padded.no-border > tr td:nth-of-type(2)'
     productName = soup.select(xsel)[0].text.strip()
-    print(f'{productID}-{productName}')
+    mod_name = modify_product_name(productName)
+    print(f'{productID}-{mod_name}')
     # Select the hidden tags from the DOM. Add the hidden values to
     # the post data within a dictionary.
     hidden_tags = soup.select('input[type=hidden]')
@@ -57,7 +59,7 @@ def downloadPDF(productID, href):
     # PDF is downloaded.  Save in a folder named with the productID
     # and productName.  Make the file name the productID, productName and
     # '.pdf' extension
-    savePDF(r, productID, productName)
+    savePDF(r, productID, mod_name)
 
 
 if __name__ == "__main__":
