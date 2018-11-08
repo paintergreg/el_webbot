@@ -74,6 +74,27 @@ def modify_product_name(i):
     if n.find('(Double Run)') >= 0:
         n = n.replace('(Double Run)', '(DR)')
 
+    if n.find('Ornament') >= 0:
+        n = n.replace('Ornament', 'Ornie')
+
+    if n.find('Border') >= 0:
+        n = n.replace('Border', 'Brdr')
+
+    if n.find('Butterfly') >= 0:
+        n = n.replace('Butterfly', 'Btrfly')
+
+    if n.find('Poinsettia') >= 0:
+        n = n.replace('Poinsettia', 'Pnseta')
+
+    if n.find('Watercolor') >= 0:
+        n = n.replace('Watercolor', 'Wtrclr')
+
+    if n.find('Square') >= 0:
+        n = n.replace('Square', 'Sq')
+
+    if n.find('Accent') >= 0:
+        n = n.replace('Accent', 'Acnt')
+
     n = n.strip()
     return n
 
@@ -99,6 +120,13 @@ if __name__ == "__main__":
             'Autumn Leaves and Pumpkins with Please (Cardstock)',
             'Autumn Leaves and Pumpkins with Please (Redwork)',
             'Autumn Leaves and Pumpkins with Please (Embossed)',
+            'Homespun Pine Bough and Ornaments',
+            'Homespun Pine Bough Ornament and Ornaments',
+            'This Border is safe',
+            'Little girls and Butterflys',
+            'Poinsettia is a flower',
+            'Paint a Poinsettia with Watercolor',
+            'Accent the Border with Squares',
             'No changes'
             ]
     for i in names:
