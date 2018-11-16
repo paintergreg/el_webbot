@@ -304,6 +304,9 @@ def modify_product_name(i):
     if n.find(' - ') >= 0:
         n = n.replace(' - ', ' ')
 
+    if n.find('Heirloom') >= 0:
+        n = n.replace('Heirloom', 'Hrlm')
+
     n = n.strip()
     return n
 
