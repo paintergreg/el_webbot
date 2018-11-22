@@ -11,7 +11,7 @@
 Tempory file to test modifiing the product name.
 """
 
-
+import re
 
 def modify_product_name(i):
     n = i
@@ -307,6 +307,66 @@ def modify_product_name(i):
     if n.find('Heirloom') >= 0:
         n = n.replace('Heirloom', 'Hrlm')
 
+    if n.find('Wintertide') >= 0:
+        n = n.replace('Wintertide', 'Wntrtd')
+
+    if n.find('Snowman') >= 0:
+        n = n.replace('Snowman', 'Snwmn')
+
+    if n.find('Reindeer') >= 0:
+        n = n.replace('Reindeer', 'Rndr')
+
+    if n.find('Nutcracker') >= 0:
+        n = n.replace('Nutcracker', 'Ntcrkr')
+
+    if n.find('Blizzard') >= 0:
+        n = n.replace('Blizzard', 'Blzrd')
+
+    if n.find('Farmhouse') >= 0:
+        n = n.replace('Farmhouse', 'Frmhse')
+
+    if n.find('Festive') >= 0:
+        n = n.replace('Festive', 'Fstv')
+
+    if n.find('On-the-Go') >= 0:
+        n = n.replace('On-the-Go', 'OtG')
+
+    if n.find('Eggnog') >= 0:
+        n = n.replace('Eggnog', 'Egng')
+
+    if n.find('Jingle') >= 0:
+        n = n.replace('Jingle', 'Jngl')
+
+    if n.find('Holiday') >= 0:
+        n = n.replace('Holiday', 'Hldy')
+
+    if n.find('Snowglobe') >= 0:
+        n = n.replace('Snowglobe', 'Snwglb')
+
+    if n.find('Peppermint') >= 0:
+        n = n.replace('Peppermint', 'Ppmt')
+
+    if n.find('Chipmunk') >= 0:
+        n = n.replace('Chipmunk', 'Cpmk')
+
+    if n.find('Gingerbread') >= 0:
+        n = n.replace('Gingerbread', 'Gngbrd')
+
+    if n.find('Songbird') >= 0:
+        n = n.replace('Songbird', 'Sngbrd')
+
+    # if n.find('Chickadees') >= 0:
+    #     n = n.replace('Chickadees', 'Chkds')
+    n = re.sub("\WChickadees\W", " Chkds ", n, flags=re.I)
+
+    # if n.lower().find(' the ') >= 0:
+    #     n = n.lower().replace(' the ', ' ')
+
+    n = re.sub("\WThe\W", " ", n, flags=re.I)
+    n = re.sub("\Wfor\W", " ", n, flags=re.I)
+    # if n.find(' For ') >= 0:
+    #     n = n.replace(' For ', ' ')
+
     n = n.strip()
     return n
 
@@ -353,6 +413,10 @@ if __name__ == "__main__":
             'Exquisite Space - Space Lighthouse Starfish Seafood Adventure',
             'Patchwork Free-Flying Rainforest Madagascan Forget-Me-Not',
             'Dragonflies',
+            'Heirloom Wintertide Snowman Reindeer Nutcracker Blizzard',
+            'Farmhouse for Festive For Whatforis this On-the-Go Eggnog Jingle Holiday Snowglobe',
+            'Peppermint Chipmunk Gingerbread the Songbird the Chickadees The For ',
+            'whattheis this',
             'No changes'
             ]
     for i in names:
