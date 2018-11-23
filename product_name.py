@@ -13,12 +13,11 @@ Tempory file to test modifiing the product name.
 
 import re
 
+
 def modify_product_name(i):
     n = i
-    if n.find('Battenburg Lace') >= 0:
-        n = n.replace('Battenburg Lace', 'BBL')
-    elif n.find('Battenburg') >= 0:
-        n = n.replace('Battenburg', 'BBL')
+    n = re.sub("Battenburg Lace", "BBL", n, flags=re.I)
+    n = re.sub("Battenburg", "BBL", n, flags=re.I)
 
     if n.find('(Freestanding)') >= 0:
         n = n.replace('(Freestanding)', '')
@@ -29,169 +28,75 @@ def modify_product_name(i):
         n = n.replace('(In-the-Hoop)', '')
         n = 'ITH ' + n
 
-    if n.find(' with ') >= 0:
-        n = n.replace(' with ', ' w ')
+    n = re.sub("\Wwith\W", " w ", n, flags=re.I)
+    n = re.sub("\Wand\W", " & ", n, flags=re.I)
 
     # Keep this in order
-    if n.find('Crafty Cut Applique') >= 0:
-        n = n.replace('Crafty Cut Applique', 'CCA')
-
-    if n.find('Crafty Cut') >= 0:
-        n = n.replace('Crafty Cut', 'CC')
-
-    if n.find('Vinyl Applique') >= 0:
-        n = n.replace('Vinyl Applique', 'VA')
-
-    if n.find('Applique') >= 0:
-        n = n.replace('Applique', 'App')
+    n = re.sub("Crafty Cut Applique", "CCA", n, flags=re.I)
+    n = re.sub("Crafty Cut", "CC", n, flags=re.I)
+    n = re.sub("Vinyl Applique", "VA", n, flags=re.I)
+    n = re.sub("Applique", "App", n, flags=re.I)
     # End of Keep these in order
 
-    if n.find('Christmas') >= 0:
-        n = n.replace('Christmas', 'Xmas')
+    n = re.sub("Christmas", "Xmas", n, flags=re.I)
+    n = re.sub("Whitework", "WW", n, flags=re.I)
+    n = re.sub("Vintage", "V", n, flags=re.I)
+    n = re.sub("Organza", "O", n, flags=re.I)
 
-    if n.find('Whitework') >= 0:
-        n = n.replace('Whitework', 'WW')
+    n = re.sub("Puff Foam", "PF", n, flags=re.I)
+    n = re.sub("Thick Thread", "TT", n, flags=re.I)
+    n = re.sub("Cardstock", "CS", n, flags=re.I)
+    n = re.sub("Redwork", "RW", n, flags=re.I)
 
-    if n.find('Vintage') >= 0:
-        n = n.replace('Vintage', 'V')
+    n = re.sub("Embossed", "EM", n, flags=re.I)
+    n = re.sub("Double Run", "DR", n, flags=re.I)
+    n = re.sub("Ornament", "Ornie", n, flags=re.I)
+    n = re.sub("Border", "Brdr", n, flags=re.I)
 
-    if n.find(' and ') >= 0:
-        n = n.replace(' and ', ' & ')
+    n = re.sub("Butterfly", "Btrfly", n, flags=re.I)
+    n = re.sub("Poinsettia", "Pnseta", n, flags=re.I)
+    n = re.sub("Watercolor", "Wtrclr", n, flags=re.I)
+    n = re.sub("Square", "Sq", n, flags=re.I)
 
-    if n.find('Organza') >= 0:
-        n = n.replace('Organza', 'O')
+    n = re.sub('Accent', 'Acnt', n, flags=re.I)
+    n = re.sub('Etching', 'Etch', n, flags=re.I)
+    n = re.sub('Goldwork', 'GW', n, flags=re.I)
+    n = re.sub('Halloween', 'Halwen', n, flags=re.I)
 
-    if n.find('Puff Foam') >= 0:
-        n = n.replace('Puff Foam', 'PF')
+    n = re.sub('Not-So-Spooky', 'Not Spooky', n, flags=re.I)
+    n = re.sub('Bountiful', 'Bntfl', n, flags=re.I)
+    n = re.sub('Pumpkin', 'Pmpkn', n, flags=re.I)
+    n = re.sub('Harvest', 'Hvst', n, flags=re.I)
 
-    if n.find('Thick Thread') >= 0:
-        n = n.replace('Thick Thread', 'TT')
+    n = re.sub('Autumn', 'Atmn', n, flags=re.I)
+    n = re.sub('Topiary', 'Tpry', n, flags=re.I)
+    n = re.sub('Jacobean', 'Jbean', n, flags=re.I)
+    n = re.sub('Enchanted', 'Echnt', n, flags=re.I)
 
-    if n.find('Cardstock') >= 0:
-        n = n.replace('Cardstock', 'CS')
+    n = re.sub('Blossoming', 'Blosm', n, flags=re.I)
+    n = re.sub('Medallion', 'Mdln', n, flags=re.I)
+    n = re.sub('Woodland', 'Wlnd', n, flags=re.I)
+    n = re.sub('Fantastic', 'Fntstc', n, flags=re.I)
 
-    if n.find('Redwork') >= 0:
-        n = n.replace('Redwork', 'RW')
+    n = re.sub('Marvelous', 'Mrvls', n, flags=re.I)
+    n = re.sub('Top of the Line -', 'TOL', n, flags=re.I)
+    n = re.sub('Blooming', 'Blmg', n, flags=re.I)
+    n = re.sub('Dinosaurs', 'Dnsrs', n, flags=re.I)
 
-    if n.find('Embossed') >= 0:
-        n = n.replace('Embossed', 'EM')
+    n = re.sub('Lightening', 'Lghtng', n, flags=re.I)
+    n = re.sub('Trapunto', 'Tpnto', n, flags=re.I)
+    n = re.sub('Southwestern', 'Swtrn', n, flags=re.I)
+    n = re.sub('Delightful', 'Dltfl', n, flags=re.I)
 
-    if n.find('Double Run') >= 0:
-        n = n.replace('Double Run', 'DR')
+    n = re.sub('Ballerina', 'Blnra', n, flags=re.I)
+    n = re.sub('Bouquet', 'Bqt', n, flags=re.I)
+    n = re.sub('Sunflower', 'Snflwr', n, flags=re.I)
+    n = re.sub('Schematic', 'Scmtc', n, flags=re.I)
 
-    if n.find('Ornament') >= 0:
-        n = n.replace('Ornament', 'Ornie')
-
-    if n.find('Border') >= 0:
-        n = n.replace('Border', 'Brdr')
-
-    if n.find('Butterfly') >= 0:
-        n = n.replace('Butterfly', 'Btrfly')
-
-    if n.find('Poinsettia') >= 0:
-        n = n.replace('Poinsettia', 'Pnseta')
-
-    if n.find('Watercolor') >= 0:
-        n = n.replace('Watercolor', 'Wtrclr')
-
-    if n.find('Square') >= 0:
-        n = n.replace('Square', 'Sq')
-
-    if n.find('Accent') >= 0:
-        n = n.replace('Accent', 'Acnt')
-
-    if n.find('Etching') >= 0:
-        n = n.replace('Etching', 'Etch')
-
-    if n.find('Goldwork') >= 0:
-        n = n.replace('Goldwork', 'GW')
-
-    if n.find('Halloween') >= 0:
-        n = n.replace('Halloween', 'Halwen')
-
-    if n.find('Not-So-Spooky') >= 0:
-        n = n.replace('Not-So-Spooky', 'Not Spooky')
-
-    if n.find('Bountiful') >= 0:
-        n = n.replace('Bountiful', 'Bntfl')
-
-    if n.find('Pumpkin') >= 0:
-        n = n.replace('Pumpkin', 'Pmpkn')
-
-    if n.find('Harvest') >= 0:
-        n = n.replace('Harvest', 'Hvst')
-
-    if n.find('Autumn') >= 0:
-        n = n.replace('Autumn', 'Atmn')
-
-    if n.find('Topiary') >= 0:
-        n = n.replace('Topiary', 'Tpry')
-
-    if n.find('Jacobean') >= 0:
-        n = n.replace('Jacobean', 'Jbean')
-
-    if n.find('Enchanted') >= 0:
-        n = n.replace('Enchanted', 'Echnt')
-
-    if n.find('Blossoming') >= 0:
-        n = n.replace('Blossoming', 'Blosm')
-
-    if n.find('Medallion') >= 0:
-        n = n.replace('Medallion', 'Mdln')
-
-    if n.find('Woodland') >= 0:
-        n = n.replace('Woodland', 'Wlnd')
-
-    if n.find('Fantastic') >= 0:
-        n = n.replace('Fantastic', 'Fntstc')
-
-    if n.find('Marvelous') >= 0:
-        n = n.replace('Marvelous', 'Mrvls')
-
-    if n.find('Top of the Line -') >= 0:
-        n = n.replace('Top of the Line -', 'TOL')
-
-    if n.find('Blooming') >= 0:
-        n = n.replace('Blooming', 'Blmg')
-
-    if n.find('Dinosaurs') >= 0:
-        n = n.replace('Dinosaurs', 'Dnsrs')
-
-    if n.find('Lightening') >= 0:
-        n = n.replace('Lightening', 'Lghtng')
-
-    if n.find('Trapunto') >= 0:
-        n = n.replace('Trapunto', 'Tpnto')
-
-    if n.find('Southwestern') >= 0:
-        n = n.replace('Southwestern', 'Swtrn')
-
-    if n.find('Delightful') >= 0:
-        n = n.replace('Delightful', 'Dltfl')
-
-    if n.find('Ballerina') >= 0:
-        n = n.replace('Ballerina', 'Blnra')
-
-    if n.find('Bouquet') >= 0:
-        n = n.replace('Bouquet', 'Bqt')
-
-    if n.find('Sunflower') >= 0:
-        n = n.replace('Sunflower', 'Snflwr')
-
-    if n.find('Schematic') >= 0:
-        n = n.replace('Schematic', 'Scmtc')
-
-    if n.find('Balloon') >= 0:
-        n = n.replace('Balloon', 'Baln')
-
-    if n.find('Impossible') >= 0:
-        n = n.replace('Impossible', 'Impsbl')
-
-    if n.find('Hummingbird') >= 0:
-        n = n.replace('Hummingbird', 'Hmgbrd')
-
-    if n.find('Snowflake') >= 0:
-        n = n.replace('Snowflake', 'Snflk')
+    n = re.sub('Balloon', 'Baln', n, flags=re.I)
+    n = re.sub('Impossible', 'Impsbl', n, flags=re.I)
+    n = re.sub('Hummingbird', 'Hmgbrd', n, flags=re.I)
+    n = re.sub('Snowflake', 'Snflk', n, flags=re.I)
 
     if n.find('Wonderland') >= 0:
         n = n.replace('Wonderland', 'Wdrlnd')
@@ -349,11 +254,13 @@ def modify_product_name(i):
     if n.find('Chipmunk') >= 0:
         n = n.replace('Chipmunk', 'Cpmk')
 
-    if n.find('Gingerbread') >= 0:
-        n = n.replace('Gingerbread', 'Gngbrd')
+    # if n.find('Gingerbread') >= 0:
+    #     n = n.replace('Gingerbread', 'Gngbrd')
+    n = re.sub("\WGingerbread\W", " Gngbrd ", n, flags=re.I)
 
-    if n.find('Songbird') >= 0:
-        n = n.replace('Songbird', 'Sngbrd')
+    # if n.find('Songbird') >= 0:
+    #     n = n.replace('Songbird', 'Sngbrd')
+    n = re.sub("\WSongbird\W", " Sngbrd ", n, flags=re.I)
 
     # if n.find('Chickadees') >= 0:
     #     n = n.replace('Chickadees', 'Chkds')
@@ -387,8 +294,8 @@ if __name__ == "__main__":
             'Harvest Pumpkin (Embossed)',
             'Bountiful Harvest Bouquet (Vinyl Applique)',
             'Bountiful and Harvest Bouquet (Vinyl Applique)',
-            'Homespun Merry Christmas',
-            'Autumn Leaves and Pumpkins with Please',
+            'Homespun Merry Christmas (Puff FoaM)',
+            'Autumn Leaves and Pumpkins with Please (Double Run)',
             'Autumn Leaves and Pumpkins with Please (Cardstock)',
             'Autumn Leaves and Pumpkins with Please (Redwork)',
             'Autumn Leaves and Pumpkins with Please (Embossed)',
