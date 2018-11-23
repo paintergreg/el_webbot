@@ -98,113 +98,50 @@ def modify_product_name(i):
     n = re.sub('Hummingbird', 'Hmgbrd', n, flags=re.I)
     n = re.sub('Snowflake', 'Snflk', n, flags=re.I)
 
-    if n.find('Wonderland') >= 0:
-        n = n.replace('Wonderland', 'Wdrlnd')
+    n = re.sub('Wonderland', 'Wdrlnd', n, flags=re.I)
+    n = re.sub('Monarch', 'Mnrh', n, flags=re.I)
+    n = re.sub('Dazzling', 'Dzlng', n, flags=re.I)
+    n = re.sub('Delicate', 'Dlcte', n, flags=re.I)
 
-    if n.find('Monarch') >= 0:
-        n = n.replace('Monarch', 'Mnrh')
+    n = re.sub('Monday', 'Mon', n, flags=re.I)
+    n = re.sub('Tuesday', 'Tue', n, flags=re.I)
+    n = re.sub('Wednesday', 'Wed', n, flags=re.I)
+    n = re.sub('Thursday', 'Thu', n, flags=re.I)
+    n = re.sub('Friday', 'Fri', n, flags=re.I)
+    n = re.sub('Saturday', 'Sat', n, flags=re.I)
+    n = re.sub('Sunday', 'Sun', n, flags=re.I)
 
-    if n.find('Dazzling') >= 0:
-        n = n.replace('Dazzling', 'Dzlng')
+    n = re.sub('Baroque', 'Brqe', n, flags=re.I)
+    n = re.sub('Goldfinch', 'Gldfnh', n, flags=re.I)
+    n = re.sub('Botanicals', 'Btncls', n, flags=re.I)
+    n = re.sub('Goldfish', 'Gldfsh', n, flags=re.I)
 
-    if n.find('Delicate') >= 0:
-        n = n.replace('Delicate', 'Dlcte')
+    n = re.sub('Kaleidoscope', 'Kldscpe', n, flags=re.I)
+    n = re.sub('Ironwork', 'Irnwrk', n, flags=re.I)
+    n = re.sub('Moroccan', 'Mrcn', n, flags=re.I)
+    n = re.sub('Quilting', 'Qltng', n, flags=re.I)
 
-    if n.find('Monday') >= 0:
-        n = n.replace('Monday', 'Mon')
+    n = re.sub('Nouveau', 'Nvu', n, flags=re.I)
+    n = re.sub('Japanese', 'Jpnse', n, flags=re.I)
+    n = re.sub('Dragonfly', 'Drgfl', n, flags=re.I)
+    n = re.sub('Birdhouse', 'Brdhs', n, flags=re.I)
 
-    if n.find('Tuesday') >= 0:
-        n = n.replace('Tuesday', 'Tue')
+    n = re.sub('Majestic', 'Mjstc', n, flags=re.I)
+    n = re.sub('American', 'Amrcn', n, flags=re.I)
+    n = re.sub('Exquisite', 'Exqst', n, flags=re.I)
+    n = re.sub('Lighthouse', 'Lthse', n, flags=re.I)
 
-    if n.find('Wednesday') >= 0:
-        n = n.replace('Wednesday', 'Wed')
+    n = re.sub('Starfish', 'Strfs', n, flags=re.I)
+    n = re.sub('Seafood', 'Sefd', n, flags=re.I)
+    n = re.sub('Adventure', 'Advntr', n, flags=re.I)
+    n = re.sub('Patchwork', 'Ptwrk', n, flags=re.I)
 
-    if n.find('Thursday') >= 0:
-        n = n.replace('Thursday', 'Thu')
+    n = re.sub('Free-Flying', 'FF', n, flags=re.I)
+    n = re.sub('Rainforest', 'Rnfrst', n, flags=re.I)
+    n = re.sub('Madagascan', 'Mdgscn', n, flags=re.I)
+    n = re.sub('Forget-Me-Not', 'FMN', n, flags=re.I)
 
-    if n.find('Friday') >= 0:
-        n = n.replace('Friday', 'Fri')
-
-    if n.find('Saturday') >= 0:
-        n = n.replace('Saturday', 'Sat')
-
-    if n.find('Sunday') >= 0:
-        n = n.replace('Sunday', 'Sun')
-
-    if n.find('Baroque') >= 0:
-        n = n.replace('Baroque', 'Brqe')
-
-    if n.find('Goldfinch') >= 0:
-        n = n.replace('Goldfinch', 'Gldfnh')
-
-    if n.find('Botanicals') >= 0:
-        n = n.replace('Botanicals', 'Btncls')
-
-    if n.find('Goldfish') >= 0:
-        n = n.replace('Goldfish', 'Gldfsh')
-
-    if n.find('Kaleidoscope') >= 0:
-        n = n.replace('Kaleidoscope', 'Kldscpe')
-
-    if n.find('Ironwork') >= 0:
-        n = n.replace('Ironwork', 'Irnwrk')
-
-    if n.find('Moroccan') >= 0:
-        n = n.replace('Moroccan', 'Mrcn')
-
-    if n.find('Quilting') >= 0:
-        n = n.replace('Quilting', 'Qltng')
-
-    if n.find('Nouveau') >= 0:
-        n = n.replace('Nouveau', 'Nvu')
-
-    if n.find('Japanese') >= 0:
-        n = n.replace('Japanese', 'Jpnse')
-
-    if n.find('Dragonfly') >= 0:
-        n = n.replace('Dragonfly', 'Drgfl')
-
-    if n.find('Birdhouse') >= 0:
-        n = n.replace('Birdhouse', 'Brdhs')
-
-    if n.find('Majestic') >= 0:
-        n = n.replace('Majestic', 'Mjstc')
-
-    if n.find('American') >= 0:
-        n = n.replace('American', 'Amrcn')
-
-    if n.find('Exquisite') >= 0:
-        n = n.replace('Exquisite', 'Exqst')
-
-    if n.find('Lighthouse') >= 0:
-        n = n.replace('Lighthouse', 'Lthse')
-
-    if n.find('Starfish') >= 0:
-        n = n.replace('Starfish', 'Strfs')
-
-    if n.find('Seafood') >= 0:
-        n = n.replace('Seafood', 'Sefd')
-
-    if n.find('Adventure') >= 0:
-        n = n.replace('Adventure', 'Advntr')
-
-    if n.find('Patchwork') >= 0:
-        n = n.replace('Patchwork', 'Ptwrk')
-
-    if n.find('Free-Flying') >= 0:
-        n = n.replace('Free-Flying', 'FF')
-
-    if n.find('Rainforest') >= 0:
-        n = n.replace('Rainforest', 'Rnfrst')
-
-    if n.find('Madagascan') >= 0:
-        n = n.replace('Madagascan', 'Mdgscn')
-
-    if n.find('Forget-Me-Not') >= 0:
-        n = n.replace('Forget-Me-Not', 'FMN')
-
-    if n.find('Dragonflies') >= 0:
-        n = n.replace('Dragonflies', 'Drgnfls')
+    n = re.sub('Dragonflies', 'Drgnfls', n, flags=re.I)
 
     if n.find(' - ') >= 0:
         n = n.replace(' - ', ' ')
@@ -313,7 +250,7 @@ if __name__ == "__main__":
             'Southwestern (Trapunto) Delightful Monarch Dazzling Delicate',
             'An Applique with (Crafty Cut Applique)',
             'Ballerina Bouquet Sunflower Schematic Balloon Impossible',
-            'Hummingbird Snowflake Wonderland'
+            'Hummingbird Snowflake Wonderland Monarch Dazzling Delicate',
             'Sunday Monday Tuesday Wednesday Thursday Friday Saturday',
             'Baroque Goldfinch Botanicals Kaleidoscope Ironwork Moroccan',
             'Quilting Nouveau Japanese Dragonfly Birdhouse Majestic American',
