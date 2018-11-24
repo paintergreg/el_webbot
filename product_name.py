@@ -28,9 +28,6 @@ def modify_product_name(i):
         n = n.replace('(In-the-Hoop)', '')
         n = 'ITH ' + n
 
-    n = re.sub("\Wwith\W", " w ", n, flags=re.I)
-    n = re.sub("\Wand\W", " & ", n, flags=re.I)
-
     # Keep this in order
     n = re.sub("Crafty Cut Applique", "CCA", n, flags=re.I)
     n = re.sub("Crafty Cut", "CC", n, flags=re.I)
@@ -142,74 +139,34 @@ def modify_product_name(i):
     n = re.sub('Forget-Me-Not', 'FMN', n, flags=re.I)
 
     n = re.sub('Dragonflies', 'Drgnfls', n, flags=re.I)
+    n = re.sub('Heirloom', 'Hrlm', n, flags=re.I)
+    n = re.sub('Wintertide', 'Wntrtd', n, flags=re.I)
+    n = re.sub('Snowman', 'Snwmn', n, flags=re.I)
 
-    if n.find(' - ') >= 0:
-        n = n.replace(' - ', ' ')
+    n = re.sub('Reindeer', 'Rndr', n, flags=re.I)
+    n = re.sub('Nutcracker', 'Ntcrkr', n, flags=re.I)
+    n = re.sub('Blizzard', 'Blzrd', n, flags=re.I)
+    n = re.sub('Farmhouse', 'Frmhse', n, flags=re.I)
 
-    if n.find('Heirloom') >= 0:
-        n = n.replace('Heirloom', 'Hrlm')
+    n = re.sub('Festive', 'Fstv', n, flags=re.I)
+    n = re.sub('On-the-Go', 'OtG', n, flags=re.I)
+    n = re.sub('Eggnog', 'Egng', n, flags=re.I)
+    n = re.sub('Jingle', 'Jngl', n, flags=re.I)
 
-    if n.find('Wintertide') >= 0:
-        n = n.replace('Wintertide', 'Wntrtd')
+    n = re.sub('Holiday', 'Hldy', n, flags=re.I)
+    n = re.sub('Snowglobe', 'Snwglb', n, flags=re.I)
+    n = re.sub('Peppermint', 'Ppmt', n, flags=re.I)
+    n = re.sub('Chipmunk', 'Cpmk', n, flags=re.I)
 
-    if n.find('Snowman') >= 0:
-        n = n.replace('Snowman', 'Snwmn')
+    n = re.sub("Gingerbread", " Gngbrd ", n, flags=re.I)
+    n = re.sub("Songbird", " Sngbrd ", n, flags=re.I)
+    n = re.sub("Chickadees", " Chkds ", n, flags=re.I)
 
-    if n.find('Reindeer') >= 0:
-        n = n.replace('Reindeer', 'Rndr')
-
-    if n.find('Nutcracker') >= 0:
-        n = n.replace('Nutcracker', 'Ntcrkr')
-
-    if n.find('Blizzard') >= 0:
-        n = n.replace('Blizzard', 'Blzrd')
-
-    if n.find('Farmhouse') >= 0:
-        n = n.replace('Farmhouse', 'Frmhse')
-
-    if n.find('Festive') >= 0:
-        n = n.replace('Festive', 'Fstv')
-
-    if n.find('On-the-Go') >= 0:
-        n = n.replace('On-the-Go', 'OtG')
-
-    if n.find('Eggnog') >= 0:
-        n = n.replace('Eggnog', 'Egng')
-
-    if n.find('Jingle') >= 0:
-        n = n.replace('Jingle', 'Jngl')
-
-    if n.find('Holiday') >= 0:
-        n = n.replace('Holiday', 'Hldy')
-
-    if n.find('Snowglobe') >= 0:
-        n = n.replace('Snowglobe', 'Snwglb')
-
-    if n.find('Peppermint') >= 0:
-        n = n.replace('Peppermint', 'Ppmt')
-
-    if n.find('Chipmunk') >= 0:
-        n = n.replace('Chipmunk', 'Cpmk')
-
-    # if n.find('Gingerbread') >= 0:
-    #     n = n.replace('Gingerbread', 'Gngbrd')
-    n = re.sub("\WGingerbread\W", " Gngbrd ", n, flags=re.I)
-
-    # if n.find('Songbird') >= 0:
-    #     n = n.replace('Songbird', 'Sngbrd')
-    n = re.sub("\WSongbird\W", " Sngbrd ", n, flags=re.I)
-
-    # if n.find('Chickadees') >= 0:
-    #     n = n.replace('Chickadees', 'Chkds')
-    n = re.sub("\WChickadees\W", " Chkds ", n, flags=re.I)
-
-    # if n.lower().find(' the ') >= 0:
-    #     n = n.lower().replace(' the ', ' ')
-
-    n = re.sub("\WThe\W", " ", n, flags=re.I)
+    n = re.sub("\W-\W", " ", n, flags=re.I)
+    n = re.sub("\Wthe\W", " ", n, flags=re.I)
     n = re.sub("\Wfor\W", " ", n, flags=re.I)
-    # if n.find(' For ') >= 0:
-    #     n = n.replace(' For ', ' ')
+    n = re.sub("\Wwith\W", " w ", n, flags=re.I)
+    n = re.sub("\Wand\W", " & ", n, flags=re.I)
 
     n = n.strip()
     return n
@@ -248,7 +205,7 @@ if __name__ == "__main__":
             'A Jacobean Enchanted Blossoming Medallion Top of the Line -',
             'Fantastic, Marvelous, Blooming Dinosaurs Lightening',
             'Southwestern (Trapunto) Delightful Monarch Dazzling Delicate',
-            'An Applique with (Crafty Cut Applique)',
+            'An - Applique with (Crafty Cut Applique)',
             'Ballerina Bouquet Sunflower Schematic Balloon Impossible',
             'Hummingbird Snowflake Wonderland Monarch Dazzling Delicate',
             'Sunday Monday Tuesday Wednesday Thursday Friday Saturday',
@@ -258,8 +215,10 @@ if __name__ == "__main__":
             'Patchwork Free-Flying Rainforest Madagascan Forget-Me-Not',
             'Dragonflies',
             'Heirloom Wintertide Snowman Reindeer Nutcracker Blizzard',
-            'Farmhouse for Festive For Whatforis this On-the-Go Eggnog Jingle Holiday Snowglobe',
-            'Peppermint Chipmunk Gingerbread the Songbird the Chickadees The For ',
+            'Farmhouse for Festive For Whatforis this On-the-Go Eggnog',
+            ' Jingle Holiday Snowglobe',
+            'Peppermint Chipmunk Gingerbread the Songbird the Chickadees',
+            'whattheis this The For Goldwork Goldfish',
             'whattheis this',
             'No changes'
             ]
