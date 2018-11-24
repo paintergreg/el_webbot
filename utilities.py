@@ -5,7 +5,6 @@ import os
 import sys
 from shutil import rmtree
 from datetime import datetime
-from product_name import modify_product_name
 
 defaultURL = "https://www.emblibrary.com/EL/New.aspx"
 HOMEDIR = "AAATemp"
