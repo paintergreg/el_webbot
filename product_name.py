@@ -158,9 +158,13 @@ def modify_product_name(i):
     n = re.sub('Peppermint', 'Ppmt', n, flags=re.I)
     n = re.sub('Chipmunk', 'Cpmk', n, flags=re.I)
 
-    n = re.sub("Gingerbread", " Gngbrd ", n, flags=re.I)
-    n = re.sub("Songbird", " Sngbrd ", n, flags=re.I)
-    n = re.sub("Chickadees", " Chkds ", n, flags=re.I)
+    n = re.sub('Gingerbread', 'Gngbrd', n, flags=re.I)
+    n = re.sub('Songbird', 'Sngbrd', n, flags=re.I)
+    n = re.sub('Chickadees', 'Chkds', n, flags=re.I)
+    n = re.sub('Merry', 'Mry', n, flags=re.I)
+
+    n = re.sub('Bear', 'Br', n, flags=re.I)
+    n = re.sub('Cardinal', 'Crdnl', n, flags=re.I)
 
     n = re.sub("\W-\W", " ", n, flags=re.I)
     n = re.sub("\Wthe\W", " ", n, flags=re.I)
@@ -218,6 +222,7 @@ if __name__ == "__main__":
             'Farmhouse for Festive For Whatforis this On-the-Go Eggnog',
             ' Jingle Holiday Snowglobe',
             'Peppermint Chipmunk Gingerbread the Songbird the Chickadees',
+            'This is a merry Merry Bear Cardinal',
             'whattheis this The For Goldwork Goldfish',
             'whattheis this',
             'No changes'
