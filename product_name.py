@@ -36,7 +36,6 @@ def modify_product_name(i: str, abbrev: list) -> str:
     n = re.sub("Applique", "App", n, flags=re.I)
     # End of Keep these in order
 
-
     n = re.sub("\W-\W", " ", n, flags=re.I)
     n = re.sub("\Wthe\W", " ", n, flags=re.I)
     n = re.sub("\Wfor\W", " ", n, flags=re.I)
