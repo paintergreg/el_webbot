@@ -8,7 +8,8 @@
 #
 
 """
-Tempory file to test modifiing the product name.
+Abbreviations to the file names are in a csv file.
+Open, read and convert the data to a list of sring lists.
 """
 
 import csv
@@ -18,9 +19,9 @@ from pathlib import Path
 def read_csv() -> list:
     a = []
     abbreviation_file = Path("/home/greg/Dropbox/AAA/el-replacement-names.csv")
-    abbreviations = csv.reader(open(abbreviation_file))
-    for abb in abbreviations:
-        a.append([abb[0], abb[1]])
+    with open(abbreviation_file) as cvsfile:
+        abbreviations = csv.reader(cvsfile)
+        a = list(abbreviations)
     return a
 
 
