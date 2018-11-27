@@ -6,7 +6,7 @@ import requests
 import signal
 from utilities import folderInitialize, keyBoardInput, signal_handler, savePDF
 from product_name import modify_product_name
-
+from csv_abbrev import read_csv
 
 def findLinks(url):
     """
@@ -32,7 +32,7 @@ def designDetail(productID, url):
     return anchor
 
 
-def downloadPDF(productID, href):
+def downloadPDF(productID, href, abbreviations: list):
     # productID is needed as a query parameter.
     payload = {}
     payload['productID'] = productID
@@ -47,7 +47,7 @@ def downloadPDF(productID, href):
     # will store the downloaded color change PDF.
     xsel = 'table.content-item.info-table.padded.no-border > tr td:nth-of-type(2)'
     productName = soup.select(xsel)[0].text.strip()
-    mod_name = modify_product_name(productName)
+    mod_name = modify_product_name(productName, abbreviations)
     print(f'{productID}-{mod_name}')
     # Select the hidden tags from the DOM. Add the hidden values to
     # the post data within a dictionary.
@@ -73,6 +73,7 @@ if __name__ == "__main__":
     if url is None:
         print("Problem entering date.")
     else:
+        abbrevations = read_csv()
         print(f'{url}')
         folderInitialize(folder_name)
         # Return a BeautifulSoup object of the main page
@@ -92,4 +93,4 @@ if __name__ == "__main__":
                 print(productID, "- Does not have a Color Change Link")
             else:
                 designPageLink = colorChangeLink[0].get('href')
-                downloadPDF(productID, designPageLink)
+                downloadPDF(productID, designPageLink, abbrevations)
