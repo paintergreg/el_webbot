@@ -59,56 +59,7 @@ def modify_product_name(i: str, abbrev: list) -> str:
 
 
 if __name__ == "__main__":
-    names = [
-            'Fall into Autumn Quilt Accent Adventure (Battenburg)',
-            'Fall into Autumn Quilt (Battenburg Lace with Rayon)',
-            'Fall into Autumn Quilt (Battenburg Lace)',
-            'Exquisite Blue Jay Feather (Freestanding)',
-            'Freestanding Daffodil in 3D (In-the-Hoop)',
-            'Bell Flower (In-the-Hoop)',
-            "Mum's the Word Flower Spray (Whitework)",
-            'Autumn Elegance Medallion (Vintage)',
-            'Brushed Lion (Thick Thread)',
-            'Midnight Meowmance Shadowbox (Organza)',
-            "Jolly Jack O' Lantern (Crafty Cut)",
-            'Harvest Pumpkin (Embossed)',
-            'Bountiful Harvest Bouquet (Vinyl Applique)',
-            'Bountiful and Harvest Bouquet (Vinyl Applique)',
-            'Homespun Merry Christmas (Puff FoaM)',
-            'Autumn Leaves and Pumpkins with Please (Double Run)',
-            'Autumn Leaves and Pumpkins with Please (Cardstock)',
-            'Autumn Leaves and Pumpkins with Please (Redwork)',
-            'Autumn Leaves and Pumpkins with Please (Embossed)',
-            'Homespun Pine Bough and Ornaments',
-            'Homespun Pine Bough Ornament and Ornaments',
-            'This Border is safe',
-            'Little girls and Butterflys',
-            'Poinsettia is a flower',
-            'Paint a Poinsettia with Watercolor',
-            'Accent the Border with Squares',
-            'Not-So-Spooky Bountiful Harvest Pumpkin in Topiary for Halloween',
-            'A Square Accent in Etching (Goldwork)',
-            'A Jacobean Enchanted Blossoming Medallion Top of the Line -',
-            'Fantastic, Marvelous, Blooming Dinosaurs Lightening',
-            'Southwestern (Trapunto) Delightful Monarch Dazzling Delicate',
-            'An - Applique with (Crafty Cut Applique)',
-            'Ballerina Bouquet Sunflower Schematic Balloon Impossible',
-            'Hummingbird Snowflake Wonderland Monarch Dazzling Delicate',
-            'Sunday Monday Tuesday Wednesday Thursday Friday Saturday',
-            'Baroque Goldfinch Botanicals Kaleidoscope Ironwork Moroccan',
-            'Quilting Nouveau Japanese Dragonfly Birdhouse Majestic American',
-            'Exquisite Space - Space Lighthouse Starfish Seafood Adventure',
-            'Patchwork Free-Flying Rainforest Madagascan Forget-Me-Not',
-            'Dragonflies',
-            'Heirloom Wintertide Snowman Reindeer Nutcracker Blizzard',
-            'Farmhouse for Festive For Whatforis this On-the-Go Eggnog',
-            ' Jingle Holiday Snowglobe',
-            'Peppermint Chipmunk Gingerbread the Songbird the Chickadees',
-            'This is a merry Merry Bear Cardinal',
-            'whattheis this The For Goldwork Goldfish (Cutwork)',
-            'whattheis this',
-            'No changes'
-            ]
     abbrev = read_csv()
-    for i in names:
-        print(modify_product_name(i, abbrev))
+    with open("test_string.txt", "r") as test_string:
+        for i in test_string.readlines():
+            print(modify_product_name(i, abbrev))
