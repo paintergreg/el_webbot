@@ -17,9 +17,14 @@ from csv_abbrev import read_csv
 
 def modify_product_name(i: str, abbrev: list) -> str:
     n = i
+    # Keep these two in order
     n = re.sub("Battenburg Lace", "BBL", n, flags=re.I)
-    n = re.sub("Battenburg", "BBL", n, flags=re.I)
+    n = re.sub("Battenburg", "BB", n, flags=re.I)
+    # End of Keep these two in order
 
+    # Keep this section as is.  The order is important
+    # Replacements are moved to the first of the name.
+    # Except for the Freestanding in parentheses
     if n.find('(Freestanding)') >= 0:
         n = n.replace('(Freestanding)', '')
         n = 'FS ' + n
@@ -36,14 +41,19 @@ def modify_product_name(i: str, abbrev: list) -> str:
     n = re.sub("Applique", "App", n, flags=re.I)
     # End of Keep these in order
 
+    # Do the replacements from the abbreviations csv file.
+    # Do these before the special cases.
+    for abb in abbrev:
+        n = re.sub(abb[0], abb[1], n, flags=re.I)
+
+    # Special cases for prepositions, definite article, 'and' and '-'
     n = re.sub("\W-\W", " ", n, flags=re.I)
     n = re.sub("\Wthe\W", " ", n, flags=re.I)
     n = re.sub("\Wfor\W", " ", n, flags=re.I)
     n = re.sub("\Wwith\W", " w ", n, flags=re.I)
     n = re.sub("\Wand\W", " & ", n, flags=re.I)
 
-    for abb in abbrev:
-        n = re.sub(abb[0], abb[1], n, flags=re.I)
+    # Make sure there are no leading or trailing white space
     n = n.strip()
     return n
 

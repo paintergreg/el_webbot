@@ -8,6 +8,7 @@ from utilities import folderInitialize, keyBoardInput, signal_handler, savePDF
 from product_name import modify_product_name
 from csv_abbrev import read_csv
 
+
 def findLinks(url):
     """
     Start at the https://www.emblibrary.com/EL/New.aspx

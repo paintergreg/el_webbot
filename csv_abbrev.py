@@ -28,4 +28,4 @@ def read_csv() -> list:
 if __name__ == '__main__':
     abbreviations = read_csv()
     for abbrev in abbreviations:
-        print(f"name: {abbrev[0]}  a: {abbrev[1]}")
+        print(f"{abbrev[0]}\t{abbrev[1]}")
