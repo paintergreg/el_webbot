@@ -46,7 +46,8 @@ def downloadPDF(productID, href, abbreviations: list):
     soup = BeautifulSoup(r.content, 'html.parser')
     # The product name is used to form the folder and file name that
     # will store the downloaded color change PDF.
-    xsel = 'table.content-item.info-table.padded.no-border > tr td:nth-of-type(2)'
+    xsel =\
+        'table.content-item.info-table.padded.no-border > tr td:nth-of-type(2)'
     productName = soup.select(xsel)[0].text.strip()
     mod_name = modify_product_name(productName, abbreviations)
     print(f'{productID}-{mod_name}')

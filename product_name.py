@@ -47,11 +47,11 @@ def modify_product_name(i: str, abbrev: list) -> str:
         n = re.sub(abb[0], abb[1], n, flags=re.I)
 
     # Special cases for prepositions, definite article, 'and' and '-'
-    n = re.sub("\W-\W", " ", n, flags=re.I)
-    n = re.sub("\Wthe\W", " ", n, flags=re.I)
-    n = re.sub("\Wfor\W", " ", n, flags=re.I)
-    n = re.sub("\Wwith\W", " w ", n, flags=re.I)
-    n = re.sub("\Wand\W", " & ", n, flags=re.I)
+    n = re.sub("\\W-\\W", " ", n, flags=re.I)
+    n = re.sub("\\Wthe\\W", " ", n, flags=re.I)
+    n = re.sub("\\Wfor\\W", " ", n, flags=re.I)
+    n = re.sub("\\Wwith\\W", " w ", n, flags=re.I)
+    n = re.sub("\\Wand\\W", " & ", n, flags=re.I)
 
     # Make sure there are no leading or trailing white space
     n = n.strip()
