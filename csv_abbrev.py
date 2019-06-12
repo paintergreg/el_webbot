@@ -20,7 +20,7 @@ from dotenv import load_dotenv
 
 def read_csv(f: str) -> list:
     a = []
-    abbreviation_file = Path("/home/greg/Dropbox/AAA/el-replacement-names.csv")
+    abbreviation_file = Path(f)
     with open(abbreviation_file) as cvsfile:
         abbreviations = csv.reader(cvsfile)
         a = list(abbreviations)

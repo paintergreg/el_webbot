@@ -36,7 +36,7 @@ class AllTests(unittest.TestCase):
         self.assertIn(["Honey", "Hny"], abbreviations)
 
     def test_abbreviate_strings(self):
-        abbrev = read_csv("./el-replacement_names.csv")
+        abbrev = read_csv("./el-replacement-names.csv")
         with open("test_string.txt", "r") as test_string:
             for i in test_string.readlines():
                 i = i.strip()
