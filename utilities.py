@@ -11,7 +11,7 @@ HOMEDIR = "AAATemp"
 BASEDIR = ""
 
 
-def folderInitialize(folder_name):
+def folderInitialize(folder_name: str) -> BASEDIR:
     """
     Make sure the folder to store the PDF files is empty.
     The folder must be empty to begin or the PDF files will build.
@@ -21,6 +21,7 @@ def folderInitialize(folder_name):
     if os.path.exists(BASEDIR):
         rmtree(BASEDIR)  # if new_folder exists remove it and all children
     os.makedirs(BASEDIR)  # Create an empty new_folder folder.
+    return BASEDIR
 
 
 def savePDF(r, productID, productName):
@@ -28,11 +29,11 @@ def savePDF(r, productID, productName):
     Save the PDF in a folder named with the productID and productName.
     Make the file name the productID, productName and '.pdf' extension
     """
-    dirPath = os.path.join('.', BASEDIR, productID + ' ' + productName)
+    dirPath = os.path.join(".", BASEDIR, productID + " " + productName)
     os.makedirs(dirPath, exist_ok=True)
-    filePath = f'{productID} {productName}.pdf'
+    filePath = f"{productID} {productName}.pdf"
     chunk_size = 2048
-    with open(os.path.join(dirPath, filePath), 'wb') as fd:
+    with open(os.path.join(dirPath, filePath), "wb") as fd:
         for chunk in r.iter_content(chunk_size):
             fd.write(chunk)
 
@@ -41,7 +42,7 @@ def signal_handler(sig, frame):
     """
     Exit the application gracefully if CTRL-C was entered.
     """
-    print('\nApplication interrupted...')
+    print("\nApplication interrupted...")
     sys.exit(0)
 
 
@@ -53,7 +54,8 @@ def keyBoardInput():
     url = defaultURL
     now = datetime.now()
     i = input(
-        "Enter Date as: DD-MM-YY or DD/MM/YY or DDMMYY or Return for today: ")
+        "Enter Date as: DD-MM-YY or DD/MM/YY or DDMMYY or Return for today: "
+    )
     if i != "":
         now = validDate(i)
         if now is not None:
@@ -62,10 +64,9 @@ def keyBoardInput():
         else:
             return None
     else:
-        j = input(
-            "Enter folder name as 'DDMMYYYY: ")
+        j = input("Enter folder name as 'DDMMYYYY: ")
         now = validDate(j)
-    return((url, now.strftime("%Y-%m-%d")))
+    return (url, now.strftime("%Y-%m-%d"))
 
 
 def validDate(datestring):
@@ -73,11 +74,14 @@ def validDate(datestring):
     Validate the user entered a string that can be converted to a
     valid date.
     """
-    regex = re.compile(r"""
+    regex = re.compile(
+        r"""
                 (\d{1,2})[/-]?
                 (\d{1,2})[/-]?
                 (\d{2,4})
-                """, re.VERBOSE)
+                """,
+        re.VERBOSE,
+    )
     mat = regex.search(datestring)
 
     try:

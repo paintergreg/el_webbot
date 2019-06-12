@@ -60,7 +60,8 @@ def modify_product_name(i: str, abbrev: list) -> str:
 
 
 if __name__ == "__main__":
-    abbrev = read_csv()
+    abbrev = read_csv("./el-replacement_names.csv")
     with open("test_string.txt", "r") as test_string:
         for i in test_string.readlines():
+            i = i.strip()
             print(modify_product_name(i, abbrev))

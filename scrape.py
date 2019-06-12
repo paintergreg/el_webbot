@@ -75,9 +75,9 @@ if __name__ == "__main__":
     if url is None:
         print("Problem entering date.")
     else:
-        abbrevations = read_csv()
+        abbrevations = read_csv("/home/greg/Dropbox/AAA/el-replacement-names.csv")
         print(f'{url}')
-        folderInitialize(folder_name)
+        base_dir = folderInitialize(folder_name)
         # Return a BeautifulSoup object of the main page
         mainPage = findLinks(url)
         #

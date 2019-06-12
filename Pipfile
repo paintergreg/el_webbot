@@ -10,8 +10,10 @@ chardet = "*"
 idna = "*"
 requests = "*"
 "urllib3" = "*"
+python-dotenv = "*"
 
 [dev-packages]
+nose = "*"
 
 [requires]
-python_version = "3.6"
+python_version = "3.7"
