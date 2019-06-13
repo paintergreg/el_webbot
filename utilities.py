@@ -8,28 +8,26 @@ from datetime import datetime
 
 defaultURL = "https://www.emblibrary.com/EL/New.aspx"
 HOMEDIR = "AAATemp"
-BASEDIR = ""
 
 
-def folderInitialize(folder_name: str) -> BASEDIR:
+def folderInitialize(folder_name: str) -> str:
     """
     Make sure the folder to store the PDF files is empty.
     The folder must be empty to begin or the PDF files will build.
     """
-    global BASEDIR
-    BASEDIR = os.path.join(HOMEDIR, folder_name)
-    if os.path.exists(BASEDIR):
-        rmtree(BASEDIR)  # if new_folder exists remove it and all children
-    os.makedirs(BASEDIR)  # Create an empty new_folder folder.
-    return BASEDIR
+    base_dir = os.path.join(HOMEDIR, folder_name)
+    if os.path.exists(base_dir):
+        rmtree(base_dir)  # if new_folder exists remove it and all children
+    os.makedirs(base_dir)  # Create an empty new_folder folder.
+    return base_dir
 
 
-def savePDF(r, productID, productName):
+def savePDF(base_dir, r, productID, productName):
     """
     Save the PDF in a folder named with the productID and productName.
     Make the file name the productID, productName and '.pdf' extension
     """
-    dirPath = os.path.join(".", BASEDIR, productID + " " + productName)
+    dirPath = os.path.join(".", base_dir, productID + " " + productName)
     os.makedirs(dirPath, exist_ok=True)
     filePath = f"{productID} {productName}.pdf"
     chunk_size = 2048
