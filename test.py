@@ -42,7 +42,7 @@ class AllTests(unittest.TestCase):
                 i = i.strip()
                 if i == "Fall into Autumn Quilt Accent Adventure (Battenburg)":
                     self.assertEqual(
-                        "Fall into Atmn Qlt Acnt Advntr (BB)",
+                        "Fall into Atmn Qlt Acnt Advntr BB",
                         modify_product_name(i, abbrev),
                     )
                 if i == "No changes":
